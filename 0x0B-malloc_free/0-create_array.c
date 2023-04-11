@@ -1,25 +1,16 @@
-#include <stdio.h>
 #include <stdlib.h>
 
-char* createCharArray(int size, char ch) {
-    char* charArray = malloc(sizeof(char) * size);
-    if (charArray == NULL) {
-        printf("Error: Could not allocate memory.\n");
-        exit(1);
+char *create_array(unsigned int size, char c) {
+    if (size == 0) {
+        return NULL;
     }
-    for (int i = 0; i < size; i++) {
-        charArray[i] = ch;
+    char *array = malloc(size * sizeof(char));
+    if (array == NULL) {
+        return NULL;
     }
-    return charArray;
-}
-
-int main() {
-    char* myCharArray = createCharArray(10, 'a');
-    for (int i = 0; i < 10; i++) {
-        printf("%c ", myCharArray[i]);
+    for (unsigned int i = 0; i < size; i++) {
+        array[i] = c;
     }
-    printf("\n");
-    free(myCharArray);
-    return 0;
+    return array;
 }
 
